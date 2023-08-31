@@ -1,0 +1,39 @@
+@{
+  ViewData["Title"] = "Home Page";
+}
+<div class="centered-card">
+    <div class="custom-card">
+        <div class="card-header">
+            <h5 style="letter-spacing: 3px;"><b>Usuario:</b> @ViewBag.username</h5>
+            <h5 style="letter-spacing: 3px;"><b>Puntaje:</b> @ViewBag.puntaje</h5>
+        </div>
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <h1 style="font-size: 25px;">@ViewBag.pregunta_actual.Enunciado</h1>
+                </div>
+                @if (!string.IsNullOrEmpty(ViewBag.pregunta_actual.Foto))
+                {
+                    <img src="@ViewBag.pregunta_actual.Foto" class="card-img-top" alt="Pregunta Imagen">
+                }
+                <div class="card-body2">
+                    <form method="post" action='@Url.Action("VerificarRespuesta")'>
+                        @foreach (Respuesta opcion in ViewBag.Respuestas)
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="idRespuesta" value="@opcion.idRespuesta">
+                                <label class="form-check-label">@opcion.Contenido</label>
+                            </div>
+                        } 
+                        <input type="hidden" name="idPregunta" value="@ViewBag.pregunta_actual.idPregunta">
+                        
+                        <button style="margin-top: 20px;" type="submit" class="card-button">Verificar Respuesta</button>
+                    </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

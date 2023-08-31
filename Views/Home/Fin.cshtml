@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="~/js/conffeti.js" asp-append-version="true"></script>
+
+<section class="fin">
+    <div class="neon">Game
+        OVER!</div>
+    <link async href="https://fonts.googleapis.com/css?family=Warnes" data-generated="http://enjoycss.com"
+        rel="stylesheet" type="text/css" />
+</section>
+<div class="fin-datos">
+    <h1 class="usuario"> @ViewBag.username <p class="score"><u>Tu puntaje:</u> <b><span
+                    id="score">@ViewBag.puntaje</span></b> </p>
+    </h1>
+
+</div>
+<div class="container-boton-fin" style="height: 120px;">
+    <a class="a-fin"  href='@Url.Action("Index") '> Volver a Jugar</a>
+</div>
+
+
